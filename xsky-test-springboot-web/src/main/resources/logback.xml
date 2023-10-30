@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 管控台日志打印，发布生产需注释 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
+            <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+            <!-- %.-1level 只显示信息级别的首字母,%-5level 左对齐显示信息级别全称 -->
+            <!-- 如需自定义关键字，用 %mdc{键名} 表示,程序中用MDC.put("键名","键值")设置，可动态设置 [%logger:%line]-->
+            <Pattern>[%date] [%level] [%logger %line] [%thread] [%X{TRACE_LOG_ID}] [%X{dstTraceId}] %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 系统日志打印 -->
+    <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>./data/appLogs/xsky-test-springboot.log</File>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+       <!--     <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>-->
+        </filter>
+        <encoder>
+            <Pattern>[%date] [%level] [%logger %line] [%thread] [%X{TRACE_LOG_ID}] [%X{dstTraceId}] %msg %n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>./data/appLogs/xsky-test-springboot.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>15</maxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+    </appender>
+
+    <!-- 异步输出 -->
+    <appender name="asyncFile" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、info级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>256</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="logFile"/>
+    </appender>
+
+    <!--
+        <springProperty scope="context" name="logging.level.outside" source="logging.level.outside" defaultValue="info"/>
+    -->
+
+    <!-- 外部jar包 日志级别设置 -->
+
+    <logger level="info" name="org.meworkspringfra"/>
+    <logger level="info" name="org.eclipse"/>
+    <logger level="info" name="io.netty"/>
+    <logger level="info" name="io.lettuce"/>
+    <logger level="info" name="io.netty"/>
+    <logger level="info" name="org.hibernate"/>
+    <logger level="info" name="com.ctrip"/>
+    <logger level="info" name="org.mybatis"/>
+    <logger level="info" name="springfox"/>
+    <logger level="info" name="org.thymeleaf"/>
+    <logger level="info" name="_org"/>
+    <logger level="info" name="java.sql"/>
+    <logger level="info" name="org.apache"/>
+    <logger level="info" name="com.apache.dubbo"/>
+
+
+    <!-- 输出到文件，可定义更多的 Appender -->
+    <root level="info">
+        <!--      <appender-ref ref="asyncFile"/>-->
+        <appender-ref ref="stdout"/>
+
+        <appender-ref ref="logFile"/>
+    </root>
+    　
+    <!-- 输出到控制台和文件，可定义更多的 Appender -->
+</configuration>

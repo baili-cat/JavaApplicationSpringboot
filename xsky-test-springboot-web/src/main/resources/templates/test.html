@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>xsky-test-SpringBoot  1.5.9.RELEASE  测试页面</title>
+</head>
+
+<script th:inline="javascript" language='javascript' type="text/javascript">
+    var  contextPath = [[${contextPath}]];
+
+    function HttpPostTimeout()
+    {
+        location.assign(contextPath +"/http/post/timeout");
+    }
+    function RocketmqNormal()
+    {
+        location.assign(contextPath +"/rocketmq/normal");
+    }
+    function RocketmqException()
+    {
+        location.assign(contextPath +"/rocketmq/exception");
+    }
+    function CxfNormal()
+    {
+        location.assign(contextPath +"/cxf/normal");
+    }
+    function CxfException()
+    {
+        location.assign(contextPath +"/cxf/exception");
+    }
+    function SqlSlow()
+    {
+        location.assign(contextPath +"/sql/slow");
+    }
+    function JedisNormal()
+    {
+        location.assign(contextPath +"/jedis/normal");
+    }
+    function JedisException()
+    {
+        location.assign(contextPath +"/jedis/exception");
+    }
+    function DubboAlibabaNormal()
+    {
+        location.assign(contextPath +"/dubbo/alibaba/normal");
+    }
+    function DubboAlibabaException()
+    {
+        location.assign(contextPath +"/dubbo/alibaba/exception");
+    }
+    function DubboAlibabaTimeout()
+    {
+        location.assign(contextPath +"/dubbo/alibaba/timeout");
+    }
+    function DubboApacheNormal()
+    {
+        location.assign(contextPath +"/dubbo/apache/normal");
+    }
+    function DubboApacheException()
+    {
+        location.assign(contextPath +"/dubbo/apache/exception");
+    }
+    function DubboApacheTimeout()
+    {
+        location.assign(contextPath +"/dubbo/apache/timeout");
+    }
+    function HttpCustomErrorException()
+    {
+        location.assign(contextPath +"/http/customerror/exception");
+    }
+    function TransferTimedtask()
+    {
+        location.assign(contextPath +"/transfer/timedtask");
+    }
+    function TransferBatch()
+    {
+        location.assign(contextPath +"/transfer/batch");
+    }
+
+    function test()
+    {
+        location.assign(contextPath +"/test");
+    }
+
+
+</script>
+<style type="text/css">
+    body {
+        font-weight:400;font-size:24px;color:#000000;
+    }
+
+    .fontButton {
+
+        font-weight:100;font-size:18px;color:#000000;
+    }
+</style>
+<h1>xsky-test-SpringBoot  1.5.9.RELEASE  测试页面</h1>
+<body>
+<form method="post" action="/all">
+    <table>
+
+
+        <tr>
+            <td>HttpPostTimeout 请求超时（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="HttpPostTimeout()" class="fontButton"  value="/http/post/timeout"/> </td>
+            <td th:text="${urlPath}+'/http/post/timeout'"></td>
+        </tr>
+        <tr>
+            <td>RocketmqNormal 请求正常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="RocketmqNormal()" class="fontButton"  value="/rocketmq/normal"/> </td>
+            <td th:text="${urlPath}+'/rocketmq/norma'"></td>
+        </tr>
+        <tr>
+            <td>RocketmqException 请求异常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="RocketmqException()" class="fontButton"  value="/rocketmq/exception"/> </td>
+            <td th:text="${urlPath}+'/rocketmq/exception'"></td>
+        </tr>
+        <tr>
+            <td>CxfNormal 请求正常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="CxfNormal()" class="fontButton"  value="/cxf/normal"/> </td>
+            <td th:text="${urlPath}+'/cxf/normal'"></td>
+        </tr>
+        <tr>
+            <td>CxfException 请求异常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="CxfException()" class="fontButton"  value="/cxf/exception"/> </td>
+            <td th:text="${urlPath}+'/cxf/exception'"></td>
+        </tr>
+        <tr>
+            <td>SqlSlow 请求慢sql（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="SqlSlow()" class="fontButton"  value="/sql/slow"/> </td>
+            <td th:text="${urlPath}+'/sql/slow'"></td>
+        </tr>
+        <tr>
+            <td>JedisNormal 请求正常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="JedisNormal()" class="fontButton"  value="/jedis/normal"/> </td>
+            <td th:text="${urlPath}+'/jedis/normal'"></td>
+        </tr>
+        <tr>
+            <td>JedisException 请求异常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="JedisException()" class="fontButton"  value="/jedis/exception"/> </td>
+            <td th:text="${urlPath}+'/jedis/exception'"></td>
+        </tr>
+        <tr>
+            <td>DubboAlibabaNormal 请求正常（跨应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="DubboAlibabaNormal()" class="fontButton"  value="/dubbo/alibaba/normal"/> </td>
+            <td th:text="${urlPath}+'/dubbo/alibaba/normal'"></td>
+        </tr>
+        <tr>
+            <td>DubboAlibabaException 请求异常（跨应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="DubboAlibabaException()" class="fontButton"  value="/dubbo/alibaba/exception"/> </td>
+            <td th:text="${urlPath}+'/dubbo/alibaba/exception'"></td>
+        </tr>
+        <tr>
+            <td>DubboAlibabaTimeout  请求异常（跨应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="DubboAlibabaTimeout()" class="fontButton"  value="/dubbo/alibaba/timeout"/> </td>
+            <td th:text="${urlPath}+'/dubbo/alibaba/timeout'"></td>
+        </tr>
+        <tr>
+            <td>DubboApacheNormal 请求正常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="DubboApacheNormal()" class="fontButton"  value="/dubbo/apache/normal"/> </td>
+            <td th:text="${urlPath}+'/dubbo/apache/normal'"></td>
+        </tr>
+        <tr>
+            <td>DubboApacheException 请求异常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="DubboApacheException()" class="fontButton"  value="/dubbo/apache/exception"/> </td>
+            <td th:text="${urlPath}+'/dubbo/apache/exception'"></td>
+        </tr>
+        <tr>
+            <td>DubboApacheTimeout 请求异常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="DubboApacheTimeout()" class="fontButton"  value="/dubbo/apache/timeout"/> </td>
+            <td th:text="${urlPath}+'/dubbo/apache/timeout'"></td>
+        </tr>
+        <tr>
+            <td>HttpCustomErrorException 请求异常（本应用）：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="HttpCustomErrorException()" class="fontButton"  value="/http/customerror/exception"/> </td>
+            <td th:text="${urlPath}+'/http/customerror/exception'"></td>
+        </tr>
+        <tr>
+            <td>定时任务页面</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="TransferTimedtask()" class="fontButton"  value="/transfer/timedtask"/> </td>
+        </tr>
+        <tr>
+            <td>批量并发触发页面</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="TransferBatch()" class="fontButton"  value="/transfer/batch"/> </td>
+        </tr>
+        <tr>
+            <td>/test</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="test()" class="fontButton"  value="/test"/> </td>
+            <td th:text="${urlPath}+'/test'"></td>
+        </tr>
+    </table>
+
+
+</form>
+</body>
+</html>

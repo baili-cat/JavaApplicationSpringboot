@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>xsky-test-springboot-http-jetty</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--        需要引入的包-->
+        <xsky-test-springboot-common.version>1.0-SNAPSHOT</xsky-test-springboot-common.version>
+        <xsky-test-springboot-apacheDubbo-provider.version>2.7.15-SNAPSHOT</xsky-test-springboot-apacheDubbo-provider.version>
+        <xsky-test-springboot-cxf-server.version>1.0-SNAPSHOT</xsky-test-springboot-cxf-server.version>
+        <xsky-test-springboot-cxf-client.version>1.0-SNAPSHOT</xsky-test-springboot-cxf-client.version>
+        <xsky-test-springboot-druid.version>1.2.7-SNAPSHOT</xsky-test-springboot-druid.version>
+        <xsky-test-springboot-redis-jedis.version>3.3.0-SNAPSHOT</xsky-test-springboot-redis-jedis.version>
+        <xsky-test-springboot-kafka.version>2.8.1-SNAPSHOT</xsky-test-springboot-kafka.version>
+        <xsky-test-springboot-netty.version>4.1.32-SNAPSHOT</xsky-test-springboot-netty.version>
+        <xsky-test-springboot-rocketmq-producer.version>1.0-SNAPSHOT</xsky-test-springboot-rocketmq-producer.version>
+        <xsky-test-springboot-rocketmq-consumer.version>1.0-SNAPSHOT</xsky-test-springboot-rocketmq-consumer.version>
+        <xsky-test-springboot-service.version>1.0-SNAPSHOT</xsky-test-springboot-service.version>
+        <!--        需要引入的包-->
+    </properties>
+
+    <dependencies>
+        <!--        新增jetty容器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+            <version>2.4.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.4.5</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-api</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+                <!--                去除tomcat容器-->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.32</version>
+        </dependency>
+        <!-- commons -->
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-common</artifactId>
+            <version>${xsky-test-springboot-common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-durid</artifactId>
+            <version>${xsky-test-springboot-druid.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>lombok</artifactId>
+                    <groupId>org.projectlombok</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>5.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>zookeeper</artifactId>
+                    <groupId>org.apache.zookeeper</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-x-discovery</artifactId>
+            <version>5.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jackson-databind</artifactId>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-apacheDubbo-provider</artifactId>
+            <version>${xsky-test-springboot-apacheDubbo-provider.version}</version>
+        </dependency>
+        <!--        kafka-->
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-kafka</artifactId>
+            <version>${xsky-test-springboot-kafka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-netty</artifactId>
+            <version>${xsky-test-springboot-netty.version}</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.example</groupId>-->
+        <!--            <artifactId>xsky-test-springboot-redis-lettuce</artifactId>-->
+        <!--            <version>1.0-SNAPSHOT</version>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-redis-jedis</artifactId>
+            <version>${xsky-test-springboot-redis-jedis.version}</version>
+        </dependency>
+
+        <!-- swagger -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>2.0.7</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>javassist</artifactId>
+                    <groupId>org.javassist</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>classmate</artifactId>
+                    <groupId>com.fasterxml</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--参数校验-->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.7.Final</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <!--    用于推送到maven仓库-->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>User Project Release</name>
+            <url>http://nexus.baili-inc.com/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>User Project SNAPSHOTS</name>
+            <url>http://nexus.baili-inc.com/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

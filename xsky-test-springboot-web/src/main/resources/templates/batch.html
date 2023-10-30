@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>批量并发测试页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<style type="text/css">
+    body {
+        font-weight:400;font-size:18px;color:#000000;
+    }
+    .textStyle {
+        font-style: normal; font-weight:400;font-size:14px;color:#000000;
+    }
+    .fontButton {
+
+        font-weight:100;font-size:16px;color:#000000;
+    }
+</style>
+<h1>批量并发测试页面</h1>
+<body>
+
+<form method="post" th:action="${contextPath} + '/batch/1/10/execute'">
+    <table>
+        <tr>
+            <td>使用说明：</td>
+            <td>code ：枚举code</td>
+            <td>count ：循环执行次数   </td>
+            <td>请求url ：/batch/{code}/{count}/execute  </td>
+        </tr>
+        <tr>
+            <td>枚举说明：</td>
+            <td>code ：1</td>
+            <td>desc ：/batch/mysql/redis/test </td>
+            <td>一个链中包含一次mysql和一次redis</td>
+        </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="submit" class="fontButton" value="触发批量并发任务" />
+                </td>
+            </tr>
+        </table>
+</form>
+</body>
+</html>

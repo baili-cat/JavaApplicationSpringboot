@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>xsky-test-springboot</artifactId>
+        <groupId>com.example.test.xskytest</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>xsky-test-springboot-web</artifactId>
+    <!-- <version>${project.parent.version}</version>-->
+    <version>1.0-SNAPSHOT</version>
+    <name>xsky-test-springboot-web</name>
+<!--    <packaging>war</packaging>-->
+    <packaging>jar</packaging>
+    <description>xsky-test-springboot-web</description>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-cxf-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-dal</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-cxf-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-rocketmq-producer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-rocketmq-consumer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest.dubbo</groupId>
+            <artifactId>xsky-test-springboot-dubbo-provider</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest.dubbo</groupId>
+            <artifactId>xsky-test-springboot-dubbo-consumer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Jetty适合长连接应用，就是聊天类的长连接 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency>
+
+<!--
+        <dependency>
+            <groupId>org.eclipse.jetty.http2</groupId>
+            <artifactId>http2-server</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-alpn-conscrypt-server</artifactId>
+        </dependency>
+-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.parent.artifactId}</finalName>
+        <filters>
+            <!-- 指定配置读取路径 -->
+            <filter>${project.build.outputDirectory}/git.properties</filter>
+        </filters>
+        <!--属性渲染-->
+        <resources>
+            <resource>
+                <!--    <targetPath>${project.build.directory}/classes</targetPath>-->
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.xlsx</include>
+                    <include>**/*.png</include>
+                    <include>**/*.p12</include>
+                    <include>**/*.css</include>
+                    <include>**/*.gif</include>
+                    <include>**/*.jpg</include>
+                    <include>**/*.jpeg</include>
+                    <include>**/*.svg</include>
+                    <include>**/*.png</include>
+                    <include>**/*.webp</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.xsl</include>
+                    <include>**/*.ico</include>
+                    <include>**/*.js</include>
+                    <include>**/*.csv</include>
+                    <include>**/*.svg</include>
+                    <include>**/*.pdf</include>
+                    <include>**/*.dat</include>
+                    <include>**</include>
+                </includes>
+            </resource>
+        </resources>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.0.2</version>
+            <configuration>
+                <encoding>UTF-8</encoding>
+                <useDefaultDelimiters>true</useDefaultDelimiters>
+                <nonFilteredFileExtensions>
+                    <nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>png</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>css</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>jpg</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>jpeg</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>csv</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>css</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>webp</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>js</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>xml</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>xsl</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>properties</nonFilteredFileExtension>
+                    <!--  <nonFilteredFileExtension>html</nonFilteredFileExtension>-->
+                    <nonFilteredFileExtension>gif</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>svg</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>dat</nonFilteredFileExtension>
+                </nonFilteredFileExtensions>
+            </configuration>
+            <!--     <executions>
+                     <execution>
+                         <id>copy-resources</id>
+                         &lt;!&ndash; here the phase you need &ndash;&gt;
+                         <phase>validate</phase>
+                         <goals>
+                             <goal>copy-resources</goal>
+                         </goals>
+                         <configuration>
+                             <nonFilteredFileExtensions>
+                                 <nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+                             </nonFilteredFileExtensions>
+                             <outputDirectory>${project.basedir}/src/main/resources/data-excel/</outputDirectory>
+                             <outputDirectory>${project.basedir}/src/main/resources/META-INF/dubbo/</outputDirectory>
+                             <resources>
+                                 <resource>
+                                     <directory>../test-interface-web/target/classes/data-excel/</directory>
+                                     <directory>../test-interface-dubbo-provider/target/classes/META-INF/dubbo/</directory>
+                                     <filtering>true</filtering>
+                                 </resource>
+                             </resources>
+                         </configuration>
+                     </execution>
+                 </executions>-->
+        </plugin>
+        <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <outputDirectory>${basedir}/../target</outputDirectory>
+                <archive>
+                    <addMavenDescriptor>false</addMavenDescriptor>
+                    <manifestEntries>
+                        <timestamp>${maven.build.timestamp}</timestamp>
+                    </manifestEntries>
+                </archive>
+            </configuration>
+        </plugin>
+  <!--      <plugin>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <configuration>
+                <webAppConfig>
+                    <contextPath>/test</contextPath>
+                    <parentLoaderPriority>true</parentLoaderPriority>
+                </webAppConfig>
+            </configuration>
+        </plugin>-->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.5</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+                <encoding>UTF-8</encoding>
+            </configuration>
+        </plugin>
+        <!--Git信息-->
+        <plugin>
+            <groupId>pl.project13.maven</groupId>
+            <artifactId>git-commit-id-plugin</artifactId>
+            <version>2.2.1</version>
+            <executions>
+                <execution>
+                    <phase>initialize</phase>
+                    <goals>
+                        <goal>revision</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <dateFormat>yyyyMMddHHmmss</dateFormat>
+                <!-- ".git"文件路径;默认值:${project.basedir}/.git; -->
+                <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
+                <!--若项目打包类型为pom,是否取消构建;默认值:true;-->
+                <skipPoms>false</skipPoms>
+                <!--是否生成"git.properties"文件;默认值:false;-->
+                <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                </generateGitPropertiesFilename>
+            </configuration>
+        </plugin>
+    </plugins>
+    </build>
+
+</project>

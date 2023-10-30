@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>定时任务控制页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<style type="text/css">
+    body {
+        font-weight:400;font-size:18px;color:#000000;
+    }
+    .textStyle {
+        font-style: normal; font-weight:400;font-size:14px;color:#000000;
+    }
+    .fontButton {
+
+        font-weight:100;font-size:16px;color:#000000;
+    }
+</style>
+<h1>定时任务控制页面</h1>
+<body><table   class="layui-table"  border="1" >
+    <tr>
+        <td>TaskId</td>
+        <td>Method</td>
+    </tr>
+    <tr th:each="v:${taskServerList}">
+        <td th:text="${v.getTaskId()}"></td><!-- key-->
+        <td th:text="${v.getDesc()}"></td><!-- value-->
+    </tr>
+</table>
+<br/>
+<span th:text="'启动参数：' + ${taskidList}"/>
+<br/><br/>
+<form method="post" th:action="${contextPath} + '/timedtask/startOrChangeCron'">
+    <table>
+        <tr>
+            <td>taskId：1</td>
+            <td>说明：定时触发触发ALL正常接口</td>
+        </tr>
+        <tr>
+            <td>taskId：2</td>
+            <td>说明：定时触发触发ALL异常接口</td>
+        </tr>
+        <tr>
+            <td>taskId：</td>
+            <td><input type="text"  style="width:300px;" class="textStyle" name="taskId" /></td>
+        </tr>
+        <tr>
+            <td>desc：</td>
+            <td><input type="text"  style="width:300px;" value="" name="desc" /></td>
+        </tr>
+        <tr>
+            <td>expression：</td>
+            <td><input type="text"  style="width:300px;" value="0/5 * * * * ?" name="expression" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="fontButton" value="启动定时任务" />
+            </td>
+        </tr>
+    </table>
+</form>
+<br/>
+    <form method="post"   th:action="${contextPath} + '/timedtask/stopCron'">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="fontButton" value="停止全部定时任务" />
+                </td>
+            </tr>
+        </table>
+</form>
+<br/><br/>
+<form method="post"   th:action="${contextPath} + '/timedtask/timing'">
+    <table>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="fontButton" value="查看进行中定时任务" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

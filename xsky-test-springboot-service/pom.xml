@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>xsky-test-springboot</artifactId>
+        <groupId>com.example.test.xskytest</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>xsky-test-springboot-service</artifactId>
+    <packaging>jar</packaging>
+    <name>xsky-test-springboot-service</name>
+    <version>1.0-SNAPSHOT</version>
+    <description>xsky-test-springboot-service</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-dal</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example.test.xskytest</groupId>
+            <artifactId>xsky-test-springboot-redis</artifactId>
+        </dependency>
+        <!--Http-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--被依赖的包-->
+                <configuration>
+                    <classifier>exec</classifier>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

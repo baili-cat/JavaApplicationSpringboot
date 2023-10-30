@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>申请结果</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/static/files/style.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="shadow">
+    <h2 class="h2">返回对象Result</h2>
+    <p th:if="${users} ne null">
+          <span th:text="${users}"/>
+    </p>
+</div>
+</body>
+</html>
